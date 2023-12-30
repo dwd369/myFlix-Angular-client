@@ -12,12 +12,11 @@ const apiUrl = 'YOUR-HOSTED-API_URL_HERE/';
   providedIn: 'root'
 })
 
-export class UserRegistrationService {
+export class FetchApiDataService {
   
   // Inject the HttpClient module to the construct or params
   // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
-
 
   // Making the api call for the user registration endpoint
   public userRegistration(userDetails: any): Observable<any> {
@@ -28,9 +27,10 @@ export class UserRegistrationService {
   };
 
   // making the api call for user login endpoint
-  public userLogin(userName: any, password: any): Observable<any> {
-    console.log(userName, password);
-    return this.http.post(apiUrl + 'users', userName).pipe(
+  public userLogin(userDetails: any): Observable<any> {
+
+    console.log(userDetails);
+    return this.http.post(apiUrl + 'users', userDetails).pipe(
       catchError(this.handleError)
     )
   };
