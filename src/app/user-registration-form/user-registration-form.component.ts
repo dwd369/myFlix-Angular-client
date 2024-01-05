@@ -8,6 +8,7 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 
 // import component is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-registration-form',
@@ -22,25 +23,30 @@ export class UserRegistrationFormComponent implements OnInit {
   constructor(
     public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserRegistrationFormComponent>,
-    public snackBar: MatSnackBar) { }
+    public snackBar: MatSnackBar,
+    public router: Router
+    ) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   // This is the function responsible for sending the form inputs to the backend
   registerUser(): void {
     this.fetchApiData.userRegistration(this.userData).subscribe((response) => {
       // logic for a successful user registration goes here! (*To be implemented)
       this.dialogRef.close(); // this will close the modal on success!
-      console.log(response);
-      this.snackBar.open('User registered successfully', 'OK', {
-        duration: 2000
-      });
+      console.log(response); // TESTING ONLY
+      this.snackBar.open('User registered successfully', 'OK', { duration: 2000});
+
+      this.fetchApiData.userLogin(this.userData).subscribe(
+        (response) => {
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('user', JSON.stringify(response.user));
+          this.router.navigate(['movies']);
+        })
+
     }, (response) => {
-      this.snackBar.open(response, 'OK', {
-        duration: 2000
-      });
+      console.log(response); //TESTING ONLY
+      this.snackBar.open(response, 'OK', {duration: 2000})
     });
   }
 }

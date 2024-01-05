@@ -1,0 +1,30 @@
+.profile-page {
+    height: 100vh;
+  }
+  
+  .profile-form {
+      display: flex;
+      flex-direction: column;
+      margin: 1rem auto;
+      max-width: 50%;
+      
+    } 
+  
+  .profile-title {
+    text-align: center;
+     font-size: 26px;
+     letter-spacing: 1px;
+  }
+  
+    .update-btn {
+      font-size: 18px;
+      padding: 1.3rem;
+    }
+  
+    .delete-btn {
+      float: right;
+      background-color: #a51c30!important;
+      color: #e8f7ee!important; 
+      font-size: 18px;
+      padding: 1.3rem;
+    }

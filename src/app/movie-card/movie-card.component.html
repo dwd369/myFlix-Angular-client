@@ -1,0 +1,40 @@
+<div class="movie-page">
+  <app-navigation-bar></app-navigation-bar>
+  <div class="movie-container">
+    <mat-card *ngFor="let movie of movies" class="movie-item">
+      <mat-card-header>
+        <mat-card-title class="movie-title">{{ movie.title }}</mat-card-title>
+      </mat-card-header>
+      <img class="movie-image" src="{{ movie.ImageURL }}" alt="{{ movie.Title }}" />
+      <mat-card-actions>
+        <button
+          (click)="getGenreDetails(movie)"
+          mat-button
+          class="details"
+        >
+          Genre
+        </button>
+        <button
+          (click)="getDirectorDetails(movie)"
+          mat-button
+          class="details"
+        >
+          Director
+        </button>
+        <button
+          (click)="getMovieDetails(movie)"
+          mat-button
+          class="details"
+        >
+          Synopsis
+        </button>
+        <button class="like" *ngIf="!isFavorite(movie._id)" mat-icon-button (click)="addFavorite(movie._id)" matTooltip="Add to favorites">
+          <mat-icon>favorite_border</mat-icon>
+        </button>
+        <button class="like" *ngIf="isFavorite(movie._id)" mat-icon-button (click)="removeFavorite(movie._id)" matTooltip="Remove from favorites">
+          <mat-icon>favorite</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
