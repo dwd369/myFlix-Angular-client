@@ -29,6 +29,7 @@ import { ProfileViewComponent } from './profile-view/profile-view.component';
 import { MatDateFormats } from '@angular/material/core';
 import { formatDate } from '@angular/common';
 
+
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
   { path: 'movies', component: MovieCardComponent },
