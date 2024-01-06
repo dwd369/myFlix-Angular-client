@@ -3,6 +3,14 @@ import { UserLoginFormComponent } from '../user-login-form/user-login-form.compo
 import { UserRegistrationFormComponent } from '../user-registration-form/user-registration-form.component';
 import { MatDialog } from '@angular/material/dialog';
 
+/**
+ * WelcomePageComponent generates the welcome screen for the web app.
+ *
+ * @example
+ * <!-- In a template -->
+ * <WelcomePageComponent></WelcomePageComponent>
+ */
+
 @Component({
   selector: 'app-welcome-page',
   templateUrl: './welcome-page.component.html',

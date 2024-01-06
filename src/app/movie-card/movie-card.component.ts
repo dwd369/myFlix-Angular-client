@@ -6,6 +6,24 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatIconModule } from '@angular/material/icon';
 
+
+/**
+ * MovieCardComponent represents a card that displays information about movies.
+ *
+ * @example
+ * <!-- In a template -->
+ * <app-movie-card [movie]="movieData"></app-movie-card>
+ *
+ * @example
+ * // In a component
+ * const movieData = {
+ *   title: 'Inception',
+ *   director: 'Christopher Nolan',
+ *   releaseYear: 2010,
+ *   // Other movie properties...
+ * };
+ */
+
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
@@ -37,7 +55,17 @@ export class MovieCardComponent implements OnInit {
     this.getMovies();
   }
 
-  // declare function to fetch movies via fetchApiData API
+  /**
+   * Fetches the list of movies via the fetchApiData API and returns the list of movies as an object
+   *
+   * @remarks
+   * This function makes an HTTP request to the movie API to retrieve a list of movies.
+   * The movies are then stored in the `movies` property of the component.
+   *
+   * @returns {void}
+   *
+   * @throws {Error} If there is an issue fetching the movies from the API.
+   */
   getMovies(): void {
     this.fetchApiData.getAllMovies().subscribe((resp: any) => {
       this.movies = resp;
@@ -46,7 +74,18 @@ export class MovieCardComponent implements OnInit {
     });
   }
 
-  // declare function to fetch details about a movie genre
+  /**
+   * Fetches the genre details for a specified movie.
+   *
+   * @remarks
+   * This function makes an HTTP request to the movie API to retrieve details about the genre
+   * of the specified movie. The genre details include the title and content of the genre.
+   *
+   * @param {string} movie - The movie object of the user selected movie
+   * @returns {void}
+   *
+   * @throws {Error} If there is an issue fetching the genre details from the API.
+   */
   getGenreDetails(movie: any): void {
     this.dialog.open(MovieViewComponent, {
       data: {
@@ -56,7 +95,17 @@ export class MovieCardComponent implements OnInit {
     })
   }
 
-  // declare function to fetch details about the movie director(s)
+  /**
+   * Retrieves the director details for a specified movie.
+   *
+   * @remarks
+   * This function extracts the director name from the provided movie object.
+   *
+   * @param {Object} movie - The movie object for which director details are requested.
+   * @returns {void}
+   *
+   * @throws {TypeError} If the provided movie object is null or undefined.
+   */
   getDirectorDetails(movie: any): void {
     this.dialog.open(MovieViewComponent, {
       data: {
@@ -65,7 +114,17 @@ export class MovieCardComponent implements OnInit {
     })
   }
 
-  // declare function to fetch details about the movie
+  /**
+   * Retrieves the details for a specified movie including the title and the description
+   *
+   * @remarks
+   * This function extracts the director name from the provided movie object.
+   *
+   * @param {Object} movie - The movie object for which director details are requested.
+   * @returns {void}
+   *
+   * @throws {TypeError} If the provided movie object is null or undefined.
+   */
   getMovieDetails(movie: any): void {
     this.dialog.open(MovieViewComponent, {
       data: {
@@ -75,7 +134,17 @@ export class MovieCardComponent implements OnInit {
     })
   }
 
-  // declare function to add movie to user's favorite
+  /**
+   * Adds a movie to the user's list of favorite movies.
+   *
+   * @remarks
+   * This function adds the movie id to the user object under the 'favoritemovies' property.
+   *
+   * @param {string} movieid - The movieId to be added to the user's FavoriteMovies list
+   * @returns {void}
+   *
+   * @throws {TypeError} If the provided movieid is null or undefined.
+   */
   addFavorite(movieId: string): void {
     this.fetchApiData.addFavoriteMovie(movieId).subscribe(
       () => {
@@ -86,7 +155,17 @@ export class MovieCardComponent implements OnInit {
     )
   }
 
-  // declare function to remove movie to user's favorite
+  /**
+   * Removes a movie from the user's list of favorite movies.
+   *
+   * @remarks
+   * This function removes the specified movie id from the user object under the 'favoritemovies' property.
+   *
+   * @param {string} movieid - The movieId to be removed from the user's FavoriteMovies list
+   * @returns {void}
+   *
+   * @throws {TypeError} If the provided movieid is null or undefined.
+   */
   removeFavorite(movieId: string): void {
     this.fetchApiData.removeFavoriteMovie(movieId).subscribe(
       () => {
@@ -97,6 +176,17 @@ export class MovieCardComponent implements OnInit {
     )
   }
 
+  /**
+   * Check whether the a movie is listed as a favorite under the user's FavoriteMovie property
+   *
+   * @remarks
+   * This function checks whether checks the list of movies against the user's FavoriteMovie property and flag any matches as favorite movie
+   *
+   * @param {string} movieid - The movieId to be validated against the user's array via fetchApiData
+   * @returns {void}
+   *
+   * @throws {TypeError} If the provided movieid is null or undefined.
+   */
   isFavorite(movieId: any): boolean {
     return this.fetchApiData.isFavoriteMovie(movieId);
   }

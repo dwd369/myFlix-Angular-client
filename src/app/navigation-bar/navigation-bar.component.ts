@@ -2,6 +2,13 @@ import { Component } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { Router } from '@angular/router';
 
+/**
+ * NavigationBarComponent represents the navigation bar in the application.
+ *
+ * @example
+ * <!-- In a template -->
+ * <NavigationBarComponent></NavigationBarComponent>
+ */
 @Component({
   selector: 'app-navigation-bar',
   templateUrl: './navigation-bar.component.html',

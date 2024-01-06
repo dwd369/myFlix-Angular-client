@@ -5,6 +5,16 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { formatDate } from '@angular/common';
 
+/**
+ * Represents a user's profile information.
+ *
+ * @typedef {Object} User
+ * @property {string} Username - The username of the user.
+ * @property {string} Email - The email address of the user.
+ * @property {string} Password - The password of the user.
+ * @property {Date} Birthday - The birthdate of the user.
+ * @property {string[]} FavoriteMovies - An array of favorite movies.
+ */
 type User = {
   Username?: string;
   Email?: string;
@@ -31,6 +41,7 @@ export class ProfileViewComponent implements OnInit {
     public router: Router
   ) {}
 
+  // load on start
   ngOnInit(): void {
     const user = this.getUser();
 

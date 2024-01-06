@@ -10,6 +10,13 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
+/**
+ * UserRegistrationFormComponent opens a dialog for user registration.
+ *
+ * @example
+ * <!-- In a template -->
+ * <UserRegistrationFormComponent></UserRegistrationFormComponent>
+ */
 @Component({
   selector: 'app-user-registration-form',
   templateUrl: './user-registration-form.component.html',

@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {  
-  tile = 'myFlix-Angular-client';
+  title = 'myFlix-Angular-client';
 }

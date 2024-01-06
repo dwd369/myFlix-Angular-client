@@ -12,6 +12,14 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 // import routes
 import { Router } from '@angular/router';
 
+
+/**
+ * UserLoginFormComponent is used to genereates a dialog for user login.
+ *
+ * @example
+ * <!-- In a template -->
+ * <UserLoginFormComponent></UserLoginFormComponent>
+ */
 @Component({
   selector: 'app-user-login-form',
   templateUrl: './user-login-form.component.html',
